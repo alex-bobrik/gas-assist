@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ситуация 2</title>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+    <script src="../bootstrap/jquery.min.js"></script>
+    <script src="../bootstrap/popper.min.js"></script>
+    <script src="../bootstrap/bootstrap.min.js"></script>
+
+    <style>
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url('../output-onlinepngtools.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: contain; /* Здесь можно использовать cover для заполнения всей доступной области или contain для масштабирования с сохранением пропорций */
+        }
+
+        .main-content {
+            margin-top: 160px;
+        }
+
+        .crossed {
+            text-decoration: line-through;
+        }
+
+        .checkboxes-group .form-check {
+            margin-left: 20px;
+        }
+
+        .timer-span {
+            color: white;
+            font-size: 1.2rem; /* Размер шрифта */
+        }
+
+        .timer-label {
+            color: rgb(215, 213, 213);
+        }
+
+        /* nav {
+            margin-top: 30px;
+        } */
+
+    </style>
+
+
+</head>
+<body>
+<nav class="navbar navbar-expand-xl navbar-dark bg-primary fixed-top delimiter" style="height: 30px;">
+</nav>
+<nav class="navbar navbar-dark bg-primary fixed-top" style="margin-top: 30px;">
+    <span class="navbar-brand">ПЛЛА</span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="first.html">
+                    Запах газа на улице
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    Перевод ГРП на байпас и обратно
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    Ситуация 3
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container main-content">
+    <div class="header">
+        <h2>Перевод ГРП на байпас и обратно</h2>
+        <hr>
+    </div>
+    <div class="checkboxes-list">
+
+        <div class="checkboxes-group">
+            <h4 class="group-header">Для перевода работы ГРП с РД на байпас:</h4>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    зафиксировать (рычаги взведения) ПЗУ (на обеих линиях редуцирования)
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck2">
+                <label class="form-check-label" for="defaultCheck2">
+                    закрыть импульс к ПЗУ на основной и доп. линии
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck3">
+                <label class="form-check-label" for="defaultCheck3">
+                    открыть кран к манометру, измеряющему давление на выходе ГРП
+                </label>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="checkboxes-group">
+            <h4 class="group-header">на доп нитке:</h4>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck4">
+                <label class="form-check-label" for="defaultCheck4">
+                    выключить РД из работы, полностью вывернув винт пилота регулятора
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck5">
+                <label class="form-check-label" for="defaultCheck5">
+                    закрыть импульс к РД
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck6">
+                <label class="form-check-label" for="defaultCheck6">
+                    вывести из зацепления рычаги ПЗУ
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck7">
+                <label class="form-check-label" for="defaultCheck7">
+                    закрыть краны на входе и выходе доп линии
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck8">
+                <label class="form-check-label" for="defaultCheck8">
+                    открыть кран на продувочной свече после РД на отключенной линии
+                </label>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="checkboxes-group">
+            <h4 class="group-header">на основной линии:</h4>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck9">
+                <label class="form-check-label" for="defaultCheck9">
+                    снизить РД давление на 10 % от заданного
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck10">
+                <label class="form-check-label" for="defaultCheck10">
+                    приоткрыть 1й кран на байпасе, продуться через свечу, после продувки закрыть кран на свече → 1й кран на байпасе открыть наполовину
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck11">
+                <label class="form-check-label" for="defaultCheck11">
+                    2-ым краном на байпасе установить рабочее давление по манометру
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck12">
+                <label class="form-check-label" for="defaultCheck12">
+                    выключить РД из работы, вывернув винт пилота регулятора до отказа
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck13">
+                <label class="form-check-label" for="defaultCheck13">
+                    закрыть краны перед фильтром и кран на выходе основной линии
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck14">
+                <label class="form-check-label" for="defaultCheck14">
+                    заглушки (при выполнении работ связанных с разборкой фланцевых соединений)
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck15">
+                <label class="form-check-label" for="defaultCheck15">
+                    закрыть импульс к РД
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck16">
+                <label class="form-check-label" for="defaultCheck16">
+                    вывести из зацепления рычаги ПЗУ
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck17">
+                <label class="form-check-label" for="defaultCheck17">
+                    установить непрерывный контроль за давлением газа на выходе из ГРП
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck18">
+                <label class="form-check-label" for="defaultCheck18">
+                    открыть краны на свечах перед фильтром и после РД
+                </label>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="checkboxes-group">
+            <h3 class="group-header">Для перевода работы ГРП с байпаса на РД необходимо:</h3>
+            <h4 class="group-header">ввести резервную нитку для этого на ней:</h4>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck19">
+                <label class="form-check-label" for="defaultCheck19">
+                    1) закрыть кран на продувочной свече перед фильтром
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck20">
+                <label class="form-check-label" for="defaultCheck20">
+                    2) опрессовка, при выполнении работ связанных с разборкой фланцевых соединений (0,01 МПа. Падение не должно превышать 0,0006 МПа за 1 час)
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck21">
+                <label class="form-check-label" for="defaultCheck21">
+                    3) снять заглушки
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck22">
+                <label class="form-check-label" for="defaultCheck22">
+                    4) закрыть кран перед РД основной линии
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck23">
+                <label class="form-check-label" for="defaultCheck23">
+                    5) проверить настройку ПЗУ и ПСУ
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck24">
+                <label class="form-check-label" for="defaultCheck24">
+                    6) открыть импульс к ПЗУ, устан. рычаги в раб положение
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck25">
+                <label class="form-check-label" for="defaultCheck25">
+                    7) открыть импульс к РД, винт пилота должен быть вывернут
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck26">
+                <label class="form-check-label" for="defaultCheck26">
+                    8) открыть кран перед фильтром
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck27">
+                <label class="form-check-label" for="defaultCheck27">
+                    9) открыть наполовину кран на продувочной свече после РД
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck28">
+                <label class="form-check-label" for="defaultCheck28">
+                    10) открыть кран перед манометром на линии редуцирования, после РД (если имеется)
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck29">
+                <label class="form-check-label" for="defaultCheck29">
+                    11) вворачивая винт пилота РД установить давление за ним согласно режимной карте
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck30">
+                <label class="form-check-label" for="defaultCheck30">
+                    12) закрыть продувку после РД и убедиться в отсутствии роста давления после РД
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck31">
+                <label class="form-check-label" for="defaultCheck31">
+                    13) 2-ым краном байпаса, снизить давление на 10%
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck32">
+                <label class="form-check-label" for="defaultCheck32">
+                    14) медленно открыть выходной кран линии
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck33">
+                <label class="form-check-label" for="defaultCheck33">
+                    15) восстановить давление газа на выходе ГРП путем вворачивания винта пилота РД
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck34">
+                <label class="form-check-label" for="defaultCheck34">
+                    16) медленно закрыть 2-ой кран на байпасе, следить за давлением
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck35">
+                <label class="form-check-label" for="defaultCheck35">
+                    17) добавить давление РД в случае необходимости
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck36">
+                <label class="form-check-label" for="defaultCheck36">
+                    18) открыть кран на свече безопасности
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck37">
+                <label class="form-check-label" for="defaultCheck37">
+                    19) убедиться в устойчивой работе РД
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck38">
+                <label class="form-check-label" for="defaultCheck38">
+                    20) проверить герметичность соединений
+                </label>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="checkboxes-group">
+            <h4 class="group-header">Ввести основную нитку, для этого на ней:</h4>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck39">
+                <label class="form-check-label" for="defaultCheck39">
+                    1) опрессовка, при выполнении работ связанных с разборкой фланцевых соединений (0,01 МПа. Падение не должно превышать 0,0006 МПа за 1 час)
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck40">
+                <label class="form-check-label" for="defaultCheck40">
+                    2) снять инвентарные заглушки
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck41">
+                <label class="form-check-label" for="defaultCheck41">
+                    3) проверить настройку ПЗУ и ПСУ
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck42">
+                <label class="form-check-label" for="defaultCheck42">
+                    4) открыть импульс к ПЗУ, устан. рычаги в раб положение
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck43">
+                <label class="form-check-label" for="defaultCheck43">
+                    5) снизить давление на доп. линии до рабочего (согласно режимной карты)
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck44">
+                <label class="form-check-label" for="defaultCheck44">
+                    6) открыть импульс к РД, винт пилота должен быть вывернут
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck45">
+                <label class="form-check-label" for="defaultCheck45">
+                    7) открыть кран на входе к основной линии
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck46">
+                <label class="form-check-label" for="defaultCheck46">
+                    8) открыть наполовину кран на продувочной свече после РД
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck47">
+                <label class="form-check-label" for="defaultCheck47">
+                    9) открыть кран перед манометром на линии редуцирования, после РД (если имеется)
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck48">
+                <label class="form-check-label" for="defaultCheck48">
+                    10) вворачивая винт пилота РД установить давление за ним согласно режимной карте
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck49">
+                <label class="form-check-label" for="defaultCheck49">
+                    11) закрыть продувку после РД и убедиться в отсутствии роста давления после РД
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck50">
+                <label class="form-check-label" for="defaultCheck50">
+                    12) медленно открыть выходной кран
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck51">
+                <label class="form-check-label" for="defaultCheck51">
+                    13) восстановить давление газа на выходе ГРП путем вворачивания винта пилота РД
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck52">
+                <label class="form-check-label" for="defaultCheck52">
+                    14) убедиться в устойчивой работе РД
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck53">
+                <label class="form-check-label" for="defaultCheck53">
+                    15) проверить герметичность соединений
+                </label>
+            </div>
+        </div>
+
+    </div>
+    <br>
+</div>
+
+<script src="../script.js"></script>
+
+</body>
+</html>

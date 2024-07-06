@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sit 1</title>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+    <script src="../bootstrap/jquery.min.js"></script>
+    <script src="../bootstrap/popper.min.js"></script>
+    <script src="../bootstrap/bootstrap.min.js"></script>
+
+
+    <style>
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url('../output-onlinepngtools.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: contain; /* Здесь можно использовать cover для заполнения всей доступной области или contain для масштабирования с сохранением пропорций */
+        }
+
+        .main-content {
+            margin-top: 160px;
+        }
+
+        .crossed {
+            text-decoration: line-through;
+        }
+
+        .checkboxes-group .form-check {
+            margin-left: 20px;
+        }
+
+        .timer-span {
+            color: white;
+            font-size: 1.2rem; /* Размер шрифта */
+        }
+
+        .timer-label {
+            color: rgb(215, 213, 213);
+        }
+
+        /* nav {
+            margin-top: 30px;
+        } */
+
+    </style>
+
+    <style>
+        #image-container {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        #image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            cursor: pointer;
+        }
+        #modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        #modal img {
+            max-width: 90%;
+            max-height: 90%;
+            transition: transform 0.1s ease; /* Уменьшено время для более резкого зума */
+        }
+        #modal .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+
+
+</head>
+<body>
+<nav class="navbar navbar-expand-xl navbar-dark bg-primary fixed-top delimiter" style="height: 30px;">
+</nav>
+<nav class="navbar navbar-dark bg-primary fixed-top" style="margin-top: 30px;">
+    <span class="navbar-brand">ПЛЛА</span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    Запах газа на улице
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="second.html">
+                    Перевод ГРП на байпас и обратно
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    Ситуация 3
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container main-content">
+
+    <div class="map-zoom-container">
+        <div class="image-input-block">
+            <input type="file" id="file-input" accept="image/*">
+            <div id="image-container"></div>
+        </div>
+
+        <div id="modal">
+            <span class="close">&times;</span>
+            <img id="modal-image" src="">
+        </div>
+    </div>
+
+
+    <div class="header">
+        <h2>Запах газа на улице</h2>
+        <hr>
+    </div>
+    <div class="checkboxes-list">
+
+        <div class="checkboxes-group">
+            <h4 class="group-header">По прибытию:</h4>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    1. проверка на загазованность зоны у машины
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck2">
+                <label class="form-check-label" for="defaultCheck2">
+                    2. жилеты, каски, приборы, противооткаты, знаки
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck3">
+                <label class="form-check-label" for="defaultCheck3">
+                    3. спросить у заявителя точное место, где он ощущал запах газа
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck4">
+                <label class="form-check-label" for="defaultCheck4">
+                    4. (инструктаж)
+                </label>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="checkboxes-group">
+            <h4 class="group-header">Проверка 50-ти метровой зоны:
+                <button onclick="startTimer(10, '10 мин')" class="btn btn-outline-secondary">таймер 10м</button>
+                <button onclick="startTimer(15, '15 мин')" class="btn btn-outline-secondary">таймер 15м</button>
+            </h4>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck5">
+                <label class="form-check-label" for="defaultCheck5">
+                    1. школы, детские сады, магазины, кинотеатры
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck6">
+                <label class="form-check-label" for="defaultCheck6">
+                    2. жилые дома:
+                </label>
+                <div class="form-check">
+                    <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck7">
+                    <label class="form-check-label" for="defaultCheck7">
+                        подвал
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck8">
+                    <label class="form-check-label" for="defaultCheck8">
+                        подъезд (на входе, на лестн. площадках первый средний и верхний этажей, квартиры)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck9">
+                    <label class="form-check-label" for="defaultCheck9">
+                        вводной г-д (после крана)
+                    </label>
+                </div>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck10">
+                <label class="form-check-label" for="defaultCheck10">
+                    3. на газ-де: вводы (до крана) и краны, ГРП (свечи), контрольные трубки и т.п.
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck11">
+                <label class="form-check-label" for="defaultCheck11">
+                    4. колодцы смежников
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck12">
+                <label class="form-check-label" for="defaultCheck12">
+                    5. зону у транспортных средств, которые используют газ в качестве моторного топлива
+                </label>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="checkboxes-group">
+            <div class="form-row">
+                <h4 class="group-header col">При обнаружении загазованности:</h4>
+                <div class="form-group col">
+                    <select id="inputState" class="form-control">
+                        <option selected>Где?..</option>
+                        <option>Подвал</option>
+                        <option>Подъезд</option>
+                        <option>Квартира</option>
+                        <option>Колодец</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck13">
+                <label class="form-check-label" for="defaultCheck13">
+                    попросить заявителя подежурить у места где обнаружена загазованность, до прибытия доп помощи
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck14">
+                <label class="form-check-label" for="defaultCheck14">
+                    вызвать доп помощь (СВДГО, СЭСГ), и представителей смежных коммуникаций
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck15">
+                <label class="form-check-label" for="defaultCheck15">
+                    проверить места пересечения газ-да со стенами и перекрытиями, выход газ-да из гильзы на вводе
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck16">
+                <label class="form-check-label" for="defaultCheck16">
+                    проверить вводы в подвал смежных коммуникаций (теплотрассы, телефонного кабеля, электрокабеля, водопровода)
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck17">
+                <label class="form-check-label" for="defaultCheck17">
+                    проверить кран на вводе, газопровод-ввод, вводной и внутренний газопровод
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck18">
+                <label class="form-check-label" for="defaultCheck18">
+                    расширять 50 метровую зону, при обнаружении загазованности (подвалов, подъездов, колодцев и др)
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck19">
+                <label class="form-check-label" for="defaultCheck19">
+                    доложить приемщику: - сообщить руководству
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck20">
+                <label class="form-check-label" for="defaultCheck20">
+                    выставить знаки
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck21">
+                <label class="form-check-label" for="defaultCheck21">
+                    оградить лентой
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck22">
+                <label class="form-check-label" for="defaultCheck22">
+                    выставить дорожные знаки  в местах подъезда на расстоянии не ближе 15 м от границы газоопасной зоны
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck23">
+                <label class="form-check-label" for="defaultCheck23">
+                    естественная и искусственная вентиляция загазованных объектов
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck24">
+                <label class="form-check-label" for="defaultCheck24">
+                    выставить на контроль загазованности прибывшую помощь
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck25">
+                <label class="form-check-label" for="defaultCheck25">
+                    определить зону распространения газа по подземным коммуникациям, обследуя соседние колодцы в радиусе не менее 50 метров от загазованного колодца
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck26">
+                <label class="form-check-label" for="defaultCheck26">
+                    пробуриться по намеченной трассе газопровода в месте пересечения газопровода с подземной коммуникацией, в колодце которой была обнаружена загазованность, или в месте параллельной ее прокладки в 15 метровой зоне
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck27">
+                <label class="form-check-label" for="defaultCheck27">
+                    проверить бурки
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck28">
+                <label class="form-check-label" for="defaultCheck28">
+                    вскрыть газопровод в месте наибольшей загазованности грунта и отремонтировать по Приложение № 3
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck29">
+                <label class="form-check-label" for="defaultCheck29">
+                    контролировать загазованность приямка и проводит его искусственную вентиляцию
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck30">
+                <label class="form-check-label" for="defaultCheck30">
+                    проверка 50-ти метровой зоны
+                </label>
+            </div>
+        </div>
+
+    </div>
+
+    <button onclick="startTimer(1, '1 мин')" class="btn btn-outline-secondary">таймер 1м</button>
+
+    <br>
+</div>
+
+<script src="../script.js"></script>
+
+</body>
+</html>
