@@ -1,17 +1,8 @@
-
 document.addEventListener('DOMContentLoaded', () => {
-    // document.getElementById('someLink').addEventListener('click', e => {
-    //     e.preventDefault();
-    //     e.target.style.display = 'none';
-    // });
     processCheckLinethrough();
-
-//    document.getElementById('btnStopAudio').addEventListener('click', () => {
-//        stopPlayNotification();
-//    });
 });
 
-
+// Strikethrough text scripts
 function processCheckLinethrough() {
     document.querySelectorAll('.can-cross').forEach(function(checkbox) {
         checkbox.addEventListener('change', function() {
@@ -25,6 +16,7 @@ function processCheckLinethrough() {
     });
 }
 
+// Timer scripts
 function startTimer(timeMins, timerName) {
     AndroidInterface.startTimer(timeMins, timerName);
 }
@@ -61,7 +53,7 @@ document.getElementById('modal').addEventListener('click', function(event) {
     }
 });
 
-// Добавление зумирования и перемещения пальцами
+// move by fingers
 const modalImage = document.getElementById('modal-image');
 let scale = 1;
 let startX = 0;

@@ -121,14 +121,6 @@ public class MultiTimerService extends Service {
         notificationManager.notify(timerId, notification);
     }
 
-//    private void stopNotificationSound() {
-//        if (soundPool != null && loaded && soundId != 0) {
-//            soundPool.stop(soundId);
-//            soundPool.release();
-//            soundPool = null;
-//        }
-//        stopSelf();
-//    }
     private void stopNotificationSound(int timerId) {
         Integer playId = soundIds.get(timerId);
         if (soundPool != null && loaded && playId != null) {
@@ -149,53 +141,6 @@ public class MultiTimerService extends Service {
             loaded = false;
         }
     }
-
-
-//    public void playNotification(int timerId, String timerName) {
-//        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-//        Notification notification = new NotificationCompat.Builder(context, CHANNEL_ID)
-//                .setContentTitle("Таймер " + timerName)
-//                .setContentText("Таймер завершен")
-//                .setSmallIcon(android.R.drawable.ic_dialog_info)
-//                .setAutoCancel(true)
-//                .build();
-//
-//        Intent stopIntent = new Intent(context, MultiTimerService.class);
-//        stopIntent.setAction(ACTION_STOP_TIMER);
-//        stopIntent.putExtra("timerId", timerId);
-//        PendingIntent stopPendingIntent = PendingIntent.getService(context, timerId, stopIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-//
-//        notification.contentIntent = stopPendingIntent;
-//        notificationManager.notify(timerId + 1000, notification);
-//        notificationManager.cancel(timerId);
-//
-//        try {
-//            if (loaded) {
-//                Log.e("MultiTimerService", "Sound loaded, start playing");
-//                soundPool.play(soundId, 1.0f, 1.0f, 0, -1, 1.0f);
-//            } else {
-//                Log.e("MultiTimerService", "Sound not loaded yet");
-//                return;
-//            }
-//
-//            new Handler().postDelayed(() -> stopNotificationSound(), 10000); // 10000ms = 10s
-//
-//        } catch (Exception ex) {
-//            Log.e("MultiTimerService", "Exception occurred: " + ex.getMessage(), ex);
-//        }
-//    }
-
-//    private void stopTimer(int timerId) {
-//        CountDownTimer countDownTimer = timers.get(timerId);
-//        if (countDownTimer != null) {
-//            countDownTimer.cancel();
-//            timers.remove(timerId);
-//            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-//            notificationManager.cancel(timerId);
-//            stopSelfIfNoTimers();
-//        }
-//    }
-
 
     private void playNotification(int timerId, String timerName) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -246,12 +191,6 @@ public class MultiTimerService extends Service {
         }
     }
 
-//    private void stopSelfIfNoTimers() {
-//        if (timers.isEmpty()) {
-//            stopSelf();
-//        }
-//    }
-
     private void stopSelfIfNoTimers() {
         if (timers.isEmpty()) {
             releaseSoundPool();
@@ -273,15 +212,6 @@ public class MultiTimerService extends Service {
             manager.createNotificationChannel(serviceChannel);
         }
     }
-
-//    @Override
-//    public void onDestroy() {
-//        super.onDestroy();
-//        for (CountDownTimer timer : timers.values()) {
-//            timer.cancel();
-//        }
-//        timers.clear();
-//    }
 
     @Override
     public void onDestroy() {

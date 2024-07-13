@@ -13,6 +13,7 @@ import android.os.IBinder;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
+// deprecated service
 public class TimerService extends Service {
     public static final String CHANNEL_ID = "TimerServiceChannel";
     public static final String ACTION_STOP_TIMER = "STOP_TIMER";

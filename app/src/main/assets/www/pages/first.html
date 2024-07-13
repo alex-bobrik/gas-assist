@@ -8,55 +8,13 @@
     <title>Sit 1</title>
 
     <link rel="stylesheet" href="../style.css">
+
     <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
     <script src="../bootstrap/jquery.min.js"></script>
     <script src="../bootstrap/popper.min.js"></script>
     <script src="../bootstrap/bootstrap.min.js"></script>
 
-
-    <style>
-
-        body, html {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-image: url('../output-onlinepngtools.png');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: contain; /* Здесь можно использовать cover для заполнения всей доступной области или contain для масштабирования с сохранением пропорций */
-        }
-
-        .main-content {
-            margin-top: 160px;
-        }
-
-        .crossed {
-            text-decoration: line-through;
-        }
-
-        .checkboxes-group .form-check {
-            margin-left: 20px;
-        }
-
-        .timer-span {
-            color: white;
-            font-size: 1.2rem; /* Размер шрифта */
-        }
-
-        .timer-label {
-            color: rgb(215, 213, 213);
-        }
-
-        /* nav {
-            margin-top: 30px;
-        } */
-
-    </style>
-
+    <!-- Image insert styles -->
     <style>
         #image-container {
             width: 100px;
@@ -98,12 +56,12 @@
             cursor: pointer;
         }
     </style>
-
-
 </head>
+
 <body>
-<nav class="navbar navbar-expand-xl navbar-dark bg-primary fixed-top delimiter" style="height: 30px;">
-</nav>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-xl navbar-dark bg-primary fixed-top delimiter" style="height: 30px;"></nav>
 <nav class="navbar navbar-dark bg-primary fixed-top" style="margin-top: 30px;">
     <span class="navbar-brand">ПЛЛА</span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -130,27 +88,26 @@
     </div>
 </nav>
 
+<!-- Content -->
 <div class="container main-content">
 
+    <!-- Image insert -->
     <div class="map-zoom-container">
         <div class="image-input-block">
             <input type="file" id="file-input" accept="image/*">
             <div id="image-container"></div>
         </div>
-
         <div id="modal">
             <span class="close">&times;</span>
             <img id="modal-image" src="">
         </div>
     </div>
 
-
     <div class="header">
         <h2>Запах газа на улице</h2>
         <hr>
     </div>
     <div class="checkboxes-list">
-
         <div class="checkboxes-group">
             <h4 class="group-header">По прибытию:</h4>
             <div class="form-check">
@@ -251,7 +208,6 @@
                     </select>
                 </div>
             </div>
-
             <div class="form-check">
                 <input class="form-check-input can-cross" type="checkbox" value="" id="defaultCheck13">
                 <label class="form-check-label" for="defaultCheck13">
@@ -361,11 +317,7 @@
                 </label>
             </div>
         </div>
-
     </div>
-
-    <button onclick="startTimer(1, '1 мин')" class="btn btn-outline-secondary">таймер 1м</button>
-
     <br>
 </div>
 

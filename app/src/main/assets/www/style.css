@@ -1,3 +1,26 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background-color:aliceblue;
+    background-image: url('background-logo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+}
+
+.main-content {
+    margin-top: 160px;
+}
+
+.crossed {
+    text-decoration: line-through;
+}
+
+.checkboxes-group .form-check {
+    margin-left: 20px;
 }
